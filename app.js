@@ -4,6 +4,7 @@ import userRouter from './routes/User.js'
 import taskRouter from './routes/Task.js'
 
 import cookieParser from 'cookie-parser';
+import { errorMiddleware } from './middlewares/error.js';
 config({
     path: "./data/config.env"
 });
@@ -14,3 +15,5 @@ app.use(cookieParser());
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/task', taskRouter);
 
+
+app.use(errorMiddleware);
